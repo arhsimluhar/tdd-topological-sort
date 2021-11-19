@@ -37,8 +37,4 @@ class Graph:
                 stack.append(i)
                 visited[i] = True
                 self.topological_sort_helper(stack, visited, i)
-
-            else:
-                return stack
-
         return stack
