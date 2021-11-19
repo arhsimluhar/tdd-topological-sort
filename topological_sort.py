@@ -32,8 +32,6 @@ class Graph:
     def topological_sort(self):
         stack = []
         visited = [False] * (self.V + 1)
-        if self.V == 0:
-            stack = []
         if self.V == 1:
             stack = list(self.graph.keys())
             return stack
