@@ -32,22 +32,13 @@ class Graph:
     def topological_sort(self):
         stack = []
         visited = [False] * (self.V + 1)
-        if self.V == 1:
-            stack = list(self.graph.keys())
-            return stack
-
-        if self.num_of_edges() == 1:
-            for i in self.graph:
+        for i in range(1, self.V+1):
+            if not visited[i]:
                 stack.append(i)
-                stack.append(self.graph[i][0])
-        else:
-            for i in range(1, self.V+1):
-                if not visited[i]:
-                    stack.append(i)
-                    visited[i] = True
-                    self.topological_sort_helper(stack, visited, i)
+                visited[i] = True
+                self.topological_sort_helper(stack, visited, i)
 
-                else:
-                    return stack
+            else:
+                return stack
 
         return stack
