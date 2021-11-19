@@ -83,3 +83,15 @@ def test_topological_sort_graph_with_three_isolated_nodes():
                    [3, 1, 2],
                    [3, 2, 1]
                    ]
+
+
+def test_topological_sort_graph_with_indirect_dependencies():
+    g = Graph(4)
+    g.addEdge(1, 2)
+    g.addEdge(1, 3)
+    g.addEdge(3, 4)
+    g.addEdge(2, 4)
+    ans = g.topological_sort()
+    assert ans in [[1, 2, 3, 4],
+                   [1, 3, 2, 4]
+                   ]
