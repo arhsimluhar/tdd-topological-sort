@@ -20,6 +20,8 @@ class Graph:
 
     def topological_sort_helper(self, stack, visited, i):
         for j in self.graph[i]:
+            if i == j:
+                continue
             if visited[j]:
                 raise SortException("Loop Exists")
             else:
@@ -41,7 +43,7 @@ class Graph:
                 stack.append(i)
                 stack.append(self.graph[i][0])
         else:
-            for i in range(1, self.V):
+            for i in range(1, self.V+1):
                 if not visited[i]:
                     stack.append(i)
                     visited[i] = True

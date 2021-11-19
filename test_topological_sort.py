@@ -38,7 +38,7 @@ def test_topological_sort_forms_loop():
         g.topological_sort()
 
 
-def test_topological_sort_single_node_with_mulitple_neighbours():
+def test_topological_sort_single_node_with_two_neighbours():
     g = Graph(3)
     g.addEdge(1, 2)
     g.addEdge(1, 3)
@@ -46,7 +46,7 @@ def test_topological_sort_single_node_with_mulitple_neighbours():
     assert ans in [[1, 2, 3], [1, 3, 2]]
 
 
-def test_topological_sort_single_node_with_mulitple_neighbours_2():
+def test_topological_sort_single_node_with_three_neighbours():
     g = Graph(4)
     g.addEdge(1, 2)
     g.addEdge(1, 3)
@@ -62,3 +62,24 @@ def test_topological_sort_single_node_with_mulitple_neighbours_2():
                    ]
 
 
+def test_topological_sort_graph_with_two_isolated_nodes():
+    g = Graph(2)
+    g.addEdge(1, 1)
+    g.addEdge(2, 2)
+    ans = g.topological_sort()
+    assert ans in [[1, 2], [2, 1]]
+
+
+def test_topological_sort_graph_with_three_isolated_nodes():
+    g = Graph(3)
+    g.addEdge(1, 1)
+    g.addEdge(2, 2)
+    g.addEdge(3, 3)
+    ans = g.topological_sort()
+    assert ans in [[1, 2, 3],
+                   [1, 3, 2],
+                   [2, 1, 3],
+                   [2, 3, 1],
+                   [3, 1, 2],
+                   [3, 2, 1]
+                   ]
