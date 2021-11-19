@@ -1,6 +1,7 @@
 import pytest
 
 from topological_sort import Graph
+from topological_sort import SortException
 
 
 def test_topological_zero_vertices():
@@ -24,4 +25,14 @@ def test_topological_sort_neighbour_points_back():
     g = Graph(2)
     g.addEdge(1, 2)
     g.addEdge(2, 1)
-    assert g.topological_sort() == 'Error'
+    with pytest.raises(SortException):
+        g.topological_sort()
+
+
+def test_topological_sort_forms_loop():
+    g = Graph(3)
+    g.addEdge(1, 2)
+    g.addEdge(2, 3)
+    g.addEdge(3, 1)
+    with pytest.raises(SortException):
+        g.topological_sort()
