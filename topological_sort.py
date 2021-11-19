@@ -18,6 +18,8 @@ class Graph:
 
     def topological_sort(self):
         stack = []
+        if self.V == 0:
+            stack = []
         if self.V == 1:
             stack = list(self.graph.keys())
             return stack
@@ -26,4 +28,5 @@ class Graph:
             for i in self.graph:
                 stack.append(i)
                 stack.append(self.graph[i][0])
-            return stack
+
+        return stack
