@@ -28,5 +28,13 @@ class Graph:
             for i in self.graph:
                 stack.append(i)
                 stack.append(self.graph[i][0])
+        else:
+            for i in self.graph:
+                stack.append(i)
+                for j in self.graph[i]:
+                    if i in self.graph[j]:
+                        return "Error"
+                else:
+                    return stack
 
         return stack

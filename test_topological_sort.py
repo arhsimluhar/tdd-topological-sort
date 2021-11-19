@@ -18,3 +18,10 @@ def test_topological_sort_single_edge():
     g = Graph(2)
     g.addEdge(1, 2)
     assert g.topological_sort() == [1, 2]
+
+
+def test_topological_sort_neighbour_points_back():
+    g = Graph(2)
+    g.addEdge(1, 2)
+    g.addEdge(2, 1)
+    assert g.topological_sort() == 'Error'
