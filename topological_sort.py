@@ -1,7 +1,9 @@
 from collections import defaultdict
 
+
 class SortException(Exception):
     pass
+
 
 class Graph:
     def __init__(self, vertices):
@@ -13,10 +15,6 @@ class Graph:
 
     def addEdge(self, u, v):
         self.graph[u].append(v)
-        self.edges += 1
-
-    def num_of_edges(self):
-        return self.edges
 
     def topological_sort_helper(self, stack, visited, i):
         for j in self.graph[i]:
@@ -32,7 +30,7 @@ class Graph:
     def topological_sort(self):
         stack = []
         visited = [False] * (self.V + 1)
-        for i in range(1, self.V+1):
+        for i in range(1, self.V + 1):
             if not visited[i]:
                 stack.append(i)
                 visited[i] = True
