@@ -95,3 +95,18 @@ def test_topological_sort_graph_with_indirect_dependencies():
     assert ans in [[1, 2, 3, 4],
                    [1, 3, 2, 4]
                    ]
+
+
+def test_topological_sort_graph_with_two_isolated_nodes_with_others():
+    g = Graph(5)
+    g.addEdge(1, 1)
+    g.addEdge(2, 2)
+    g.addEdge(3, 4)
+    g.addEdge(4, 5)
+
+    ans = g.topological_sort()
+    assert ans in [[1, 2, 3, 4, 5],
+                   [2, 1, 3, 4, 5],
+                   [3, 4, 5, 1, 2],
+                   [3, 4, 5, 2, 1],
+                   ]
